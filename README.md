@@ -1,6 +1,6 @@
 # COMP-580-Project
 
-## Demo link: (will be here when completed)
+## Demo link: https://jordangkq.github.io/COMP-580-Project/
 ## How to play: 
 Click on the link above - make sure you are using Google Chrome! Make sure you have your volume up as this is a listening game and all of the instructions will be read aloud. If you want, you can right click and select "inspect" to see the instructions printed out in the console. 
 
