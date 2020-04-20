@@ -1,0 +1,130 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+  
+  body {
+    background-color: blanchedalmond;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  .soundboard {
+    height: 90vh;
+    margin: 0rem;
+    display: grid;
+    size: 0ex;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+
+  .helpcenter{
+    height:9vh;
+    margin-left: auto;
+    display: grid;
+    font-size: 3rem;
+  }
+  .cell {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    padding: 4rem;
+  }
+
+  .help{
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    padding: 4rem;
+  }
+
+  .cell-1 {
+    background: deepskyblue;
+  }
+
+  .cell-1.active{
+    background-color: rgb(4, 162, 214);
+  }
+
+  .cell-2 {
+    background: orangered;
+  }
+
+  .cell-2.active{
+    background-color: red;
+  }
+
+  .cell-3 {
+    background: royalblue;
+  }
+
+  .cell-3.active{
+    background-color: rgb(59, 59, 223);
+  }
+  .cell-4 {
+    background: gold;
+  }
+
+  .cell-4.active{
+    background-color: yellow
+  }
+
+  .cell-1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  .cell-2:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  .cell-3:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  .cell-4:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  .play{
+    color: black;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .shuffle{
+    background: purple;
+    text-align: center;
+    font-size: 10px;
+    padding: 16px;
+  }
+
+  .shuffle:hover{
+    background-color: mediumorchid;
+  }
+
+  .inst:hover{
+    background-color: grey;
+  }
+  .inst{
+    background: lightslategray;
+    text-align: center;
+    font-size: 10px;
+    padding: 16px;
+  }
+  
+  button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  } 
+  
