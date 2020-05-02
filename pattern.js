@@ -1,225 +1,405 @@
 $(document).ready(() => {
-var synth = window.speechSynthesis;
-var beginning = true;
+  var synth = window.speechSynthesis;
+  var beginning = true;
+  document.onclick = function () { start() };
 
-document.onclick = function() {start()}
+  var wasClicked1 = 0;
+  var wasClicked2 = 0;
+  var wasClicked3 = 0;
+  var wasClicked4 = 0;
 
-var wasClicked1 = 0;
-var wasClicked2 = 0;
-var wasClicked3 = 0;
-var wasClicked4 = 0;
+  var pClicked1 = 0;
+  var pClicked2 = 0;
+  var pClicked3 = 0;
+  var pClicked4 = 0;
 
-var pClicked1 = 0;
-var pClicked2 = 0;
-var pClicked3 = 0;
-var pClicked4 = 0;
+  var lookingFor = false;
+  var lookingFor1 = false;
+  var lookingFor2 = false;
+  var lookingFor3 = false;
+  var lookingfor4 = false;
 
-var lookingFor = false;
-var lookingFor1 = false;
-var lookingFor2 = false;
-var lookingFor3 = false;
-var lookingfor4 = false;
-
-//Practice & Instructions
-function start() {
-  if (beginning) {
-    document.getElementById("tapAnywhere").remove();
-    document.getElementById("cell1").onclick = function () { clicked1() };
-    document.getElementById("cell2").onclick = function () { clicked2() };
-    document.getElementById("cell3").onclick = function () { clicked3() };
-    document.getElementById("cell4").onclick = function () { clicked4() };
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Pattern Recognition! In this mode, I will play a pattern of notes. Then you must repeat the pattern that I played. Use the four blocks to play your patterns. Click the practice button to hear the sounds."))
-    console.log("Let's play -- Matching Patterns! In this mode, I will play a pattern of notes. Then you must repeat the pattern that I played. Use the four blocks to play your patterns. Click the practice button to hear the sounds.")
-    beginning = false;
-  }
-}
-
-var inPractice = true;
-var playing = false;
-
-document.getElementById("inst").onclick = function () { positionInstructions() };
-
-function positionInstructions() {
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("There are 4 cells in the middle of the screen"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("The first cell is in the top left corner"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("the second cell is in the top right corner"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("the third cell is in the bottom left corner"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("the fourth cell is in the bottom right corner"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click each cell to hear the sounds"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("When you are ready to play click shuffle"))
-  inPractice=false;
-}
-
-document.getElementById("cell1").onmouseover = function () { clicked1() };
-document.getElementById("cell2").onmouseover = function () { clicked2() };
-document.getElementById("cell3").onmouseover = function () { clicked3() };
-document.getElementById("cell4").onmouseover = function () { clicked4() };
-document.getElementById("shuff").onmouseover = function () { shuffplay() };
-document.getElementById("inst").onmouseover = function () { instplay() };
-function clicked1() {
-  //window.speechSynthesis.speak(new SpeechSynthesisUtterance("Cell 1"))
-//   cell1.addEventListener("click", function () {
-//     this.removeEventListener('mouseover',mouseoverfunc);
-// })
-}
-
-function shuffplay() {
-   window.speechSynthesis.speak(new SpeechSynthesisUtterance("Shuffle"))
- }
- function instplay() {
- window.speechSynthesis.speak(new SpeechSynthesisUtterance("Practice"))
- }
-function clicked2() {
- // window.speechSynthesis.speak(new SpeechSynthesisUtterance("Cell 2"))
-}
-function clicked3() {
- // window.speechSynthesis.speak(new SpeechSynthesisUtterance("Cell 3"))
-}
-function clicked4() {
-  //window.speechSynthesis.speak(new SpeechSynthesisUtterance("Cell 4"))
-}
-
-//Practice Playing Notes
-const cells = document.querySelectorAll('.cell')
-cells.forEach(cell => {
-  cell.addEventListener('click',() => playNote(cell))
-})
-
-
-//shuff.addEventListener('click',() => playNote(cell));
-// cell.addEventListener("mouseover", help());
-
-function playNote(cell){
-  const noteAudio = document.getElementById(cell.dataset.note)
-  noteAudio.currentTime = 0;
-  noteAudio.play()
-  cell.classList.add('active')
-  noteAudio.addEventListener('ended', () => {
-    cell.classList.remove('active')
-  })
-  }
-
-  document.getElementById("shuff").onclick = function () { pattern() };
-
-
-//Play Pattern
-let arr = [1,2,3,4];
-let arr2 = ["notes/C.mp3","notes/Db.mp3","notes/Eb.mp3","notes/E.mp3"];
-let arr3 = ["cell1","cell2","cell3","cell4"];
-
-let arrayShuffle = function(arr){
-  let newPos,
-    temp;
-    for(let i = arr.length-1;i>0;i--){
-      newPos = Math.floor(Math.random()*(i+1));
-      temp = arr[i];
-      arr[i] = arr[newPos];
-      arr[newPos] = temp;
+  function start() {
+    if (beginning) {
+      document.getElementById("tapAnywhere").remove();
+      document.getElementById("cell1").onclick = function () { clicked1() };
+      document.getElementById("cell2").onclick = function () { clicked2() };
+      document.getElementById("cell3").onclick = function () { clicked3() };
+      document.getElementById("cell4").onclick = function () { clicked4() };
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Pattern Matching! In this mode, I will play a pattern. Then you must play the same pattern. Use the four blocks to play your sound."))
+      console.log("Let's play -- Pattern Matching! In this mode, I will play a pattern. Then you must play the same pattern. Use the four blocks to play your sound.")
+      practice();
+      beginning = false;
     }
-    return(arr);
-};
 
-//Test Array
-let newArray = arrayShuffle(arr);
-
-console.log(newArray);
-
-let newArray2 = arrayShuffle(newArray);
-
-console.log(newArray2);
-
-let playArray = arrayShuffle(arr2);
-console.log(playArray)
-
-let playArray2 = arrayShuffle(arr3);
-console.log(playArray2)
-
-
-function playPattern(){
-  let note=0;
-  const noteAudio1 = document.getElementById(cell1.dataset.note);
-  const noteAudio2 = document.getElementById(cell2.dataset.note);
-  const noteAudio3 = document.getElementById(cell3.dataset.note);
-  const noteAudio4 = document.getElementById(cell4.dataset.note);
-  // noteAudio1.play();
-  let arr4 = [noteAudio1,noteAudio2,noteAudio3,noteAudio4];
-  let playarr = arrayShuffle(arr4);
-  console.log(playarr)
-  for(let i = 0;i<arr4.length-1;i++){
-    playarr[i].currentTime = 0;
-      note = playarr[i];
-      note.play();
   }
-  // note.play();
-}
 
-// matchPattern(arr){
-//   for(let i = 0; i<arr;i++){
-//     if(arr[i]==clicked){
-//       //go on
-//     }
-//     else{
-//       //say try again
-//     }
-//   }
-// }
-const n1 = document.getElementById("cell1");
-const n2 = document.getElementById("cell2");
-const n3 = document.getElementById("cell3");
-const n4 = document.getElementById("cell4");
+  var inPractice = true;
+  var playing = false;
 
-function pattern(){
-  playing = true;
-  lookingFor = false;
-  // window.speechSynthesis.speak(new SpeechSynthesisUtterance("Lets Play!"))
-  // console.log("Let's play!")
-  var myVar;
-  let myarray = [n1,n2,n3,n4];
-  let parr = arrayShuffle(myarray);
-  console.log(parr);
-  // for(let i = 0;i<parr.length;i++){
-  //   playNote(parr[i]);
-  //   console.log(parr[i]);
-  // }
+  function practice() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's practice playing the squares to learn what sounds they make!"))
+    console.log("Let's practice playing the squares to learn what sounds they make!")
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- upper -- left -- portion of the screen."))
+    console.log("Click the -- upper -- left -- portion of the screen.")
+  }
 
-  //matchPattern function
-}
+  function practice2() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- upper -- right -- portion of the screen."))
+    console.log("Good! Now. Click the -- upper -- right -- portion of the screen.")
+  }
 
-function playGame(){
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("A pattern will play"))
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance("Try to match the pattern"))
-}
+  function practice3() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- lower -- left -- portion of the screen."))
+    console.log("Good! Now. Click the -- lower -- left -- portion of the screen.")
 
-// function playPattern(){
-//   let note=0;
-//   const noteAudio1 = document.getElementById(cell1.dataset.note);
-//   const noteAudio2 = document.getElementById(cell2.dataset.note);
-//   const noteAudio3 = document.getElementById(cell3.dataset.note);
-//   const noteAudio4 = document.getElementById(cell4.dataset.note);
-//   // noteAudio1.play();
-//   let arr4 = [cell1,cell2,cell3,cell4];
-//   let playarr = arrayShuffle(arr4);
-//   console.log(playarr)
-//   for(let i = 0;i<arr4.length-1;i++){
-//     playarr[i].currentTime = 0;
-//       note = playarr[i];
-//   }
-//   note.play();
-// }
+  }
 
-// let i = arr4.length-1;i>0;i--
-//     function to generate a random number
-// function generateRandomNumber() {
-//   return Math.floor((Math.random() * 2) + 1);
-// }
+  function practice4() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- lower -- right -- portion of the screen."))
+    console.log("Good! Now. Click the -- lower -- right -- portion of the screen.")
 
-// function generateRandomNumber() {
-//   return Math.floor((Math.random() * 2) + 1);
-// }
-//     function randomize(array){
+  }
 
-//     }
+  function finishPractice() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now play around with the sounds as much as you like. When you are ready to begin the game, press the -- upper -- left -- square -- 3 -- times!"))
+    console.log("Good! Now play around with the sounds as much as you like. When you are ready to begin the game, press the -- upper -- left -- square -- 3 -- times!")
+    inPractice = false;
+  }
 
-  ///Goal 1 Play the Randomized Pattern:
+  function playGame() {
+    playing = true;
+    lookingFor = false;
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play!"))
+    console.log("Let's play!")
+    var x = 0
+    var y = 0
+    x = Math.floor(Math.random() * 2) + 1;
+    if (x == 1) {
+      y = playPattern1()
+    }
+    if (x == 2) {
+      y = playPattern1()
+    }
+    if (x == 3) {
+      y = playPattern1()
+    }
+  }
+
+
+
+  function playPattern1() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- higher -- than -- "))
+    console.log("Play a sound that is higher than:")
+    var h = Math.floor(Math.random() * 2) + 1;
+    if (h == 1) {
+     time1 = setTimeout(playC4, 5000)
+     clearTimeout(time1);
+     time1=0;
+      setTimeout(playA4, 5000)
+    }
+    if (h == 2) {
+     time2= setTimeout(playC4, 5000)
+     clearTimeout(time2);
+     time2=0;
+      setTimeout(playA4, 5000)
+    }
+    if (h == 3) {
+      time3 = setTimeout(playC4, 5000)
+      clearTimeout(time3);
+      time3=0;
+      setTimeout(playA4, 5000)
+    }
+
+    lookingFor = true;
+
+    if (h == 1) {
+      lookingFor1 = false;
+      lookingFor2 = true;
+      lookingFor3 = true;
+      lookingfor4 = true;
+    }
+    if (h == 2) {
+      lookingFor1 = false;
+      lookingFor2 = false;
+      lookingFor3 = true;
+      lookingfor4 = true;
+    }
+    if (h == 3) {
+      lookingFor1 = false;
+      lookingFor2 = false;
+      lookingFor3 = false;
+      lookingfor4 = true;
+    }
+
+
+  }
+
+  function play1(){
+    const noteAudio = document.getElementById(cell1.dataset.note)
+  }
+  function play2(){
+    const noteAudio = document.getElementById(cell2.dataset.note)
+  }
+  function play3(){
+    const noteAudio = document.getElementById(cell3.dataset.note)
+  }
+  function play4(){
+    const noteAudio = document.getElementById(cell4.dataset.note)
+  }
+  
+  function playPattern2() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- lower -- than -- "))
+    console.log("Play a sound that is lower than:")
+    var h = Math.floor(Math.random() * 2) + 1;
+    if (h == 1) {
+      setTimeout(playB5, 5000);
+    }
+    if (h == 2) {
+      setTimeout(playA4, 5000);
+    }
+    if (h == 3) {
+      setTimeout(playGsharp, 5000);
+    }
+
+    lookingFor = true;
+
+    if (h == 1) {
+      lookingFor1 = true;
+      lookingFor2 = true;
+      lookingFor3 = false;
+      lookingfor4 = true;
+    }
+    if (h == 2) {
+      lookingFor1 = true;
+      lookingFor2 = false;
+      lookingFor3 = false;
+      lookingfor4 = false;
+    }
+    if (h == 3) {
+      lookingFor1 = true;
+      lookingFor2 = true;
+      lookingFor3 = false;
+      lookingfor4 = false;
+    }
+
+
+  }
+
+  function playPattern3() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- the same -- as -- "))
+    Console.log("Play a sound that is the same as::")
+    var h = Math.floor(Math.random() * 2) + 1;
+    if (h == 1) {
+      setTimeout(playC4, 5000)
+    }
+    if (h == 2) {
+      setTimeout(playA4, 5000)
+    }
+    if (h == 3) {
+      setTimeout(playB5, 5000)
+    }
+    if (h == 4) {
+      setTimeout(playGsharp, 5000)
+    }
+
+    lookingFor = true;
+
+    if (h == 1) {
+      lookingFor1 = true;
+      lookingFor2 = false;
+      lookingFor3 = false;
+      lookingfor4 = false;
+    }
+    if (h == 2) {
+      lookingFor1 = false;
+      lookingFor2 = true;
+      lookingFor3 = false;
+      lookingfor4 = false;
+    }
+    if (h == 3) {
+      lookingFor1 = false;
+      lookingFor2 = false;
+      lookingFor3 = true;
+      lookingfor4 = false;
+    }
+    if (h == 4) {
+      lookingFor1 = false;
+      lookingFor2 = false;
+      lookingFor3 = false;
+      lookingfor4 = true;
+    }
+  }
+
+
+  function playGsharp() {
+    var context = new AudioContext()
+    var o = context.createOscillator()
+    var g = context.createGain()
+    var frequency = 830.6
+    o.frequency.value = frequency
+    o.connect(g)
+    g.connect(context.destination)
+    o.start(0)
+    g.gain.exponentialRampToValueAtTime(
+      0.00001, context.currentTime + 1
+    )
+    console.log("Played G sharp (830)")
+  }
+
+  function playA4() {
+    var context = new AudioContext()
+    var o = context.createOscillator()
+    var g = context.createGain()
+    var frequency = 440.0
+    o.frequency.value = frequency
+    o.connect(g)
+    g.connect(context.destination)
+    o.start(0)
+    g.gain.exponentialRampToValueAtTime(
+      0.00001, context.currentTime + 1
+    )
+    console.log("Played A4 (440)")
+  }
+
+  function playC4() {
+    var context = new AudioContext()
+    var o = context.createOscillator()
+    var g = context.createGain()
+    var frequency = 261.6
+    o.frequency.value = frequency
+    o.connect(g)
+    g.connect(context.destination)
+    o.start(0)
+    g.gain.exponentialRampToValueAtTime(
+      0.00001, context.currentTime + 1
+    )
+    console.log("Played C4 (261)")
+  }
+
+  function playB5() {
+    var context = new AudioContext()
+    var o = context.createOscillator()
+    var g = context.createGain()
+    var frequency = 987.8
+    o.frequency.value = frequency
+    o.connect(g)
+    g.connect(context.destination)
+    o.start(0)
+    g.gain.exponentialRampToValueAtTime(
+      0.00001, context.currentTime + 1
+    )
+    console.log("Played B5 (987)")
+  }
+
+  function clicked1() {
+    playC4()
+    if (inPractice == true) {
+      wasClicked1 = 0;
+      setTimeout(practice2, 1000);
+    }
+    if (playing == true) {
+      pClicked1 = true;
+      pClicked2 = false;
+      pClicked3 = false;
+      pClicked4 = false;
+    }
+    if (lookingFor) {
+      if (lookingFor1 == true) {
+        setTimeout(goodJob, 2000)
+        console.log("Good job!")
+        setTimeout(playGame, 2000);
+      } else {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Not quite, let's try a different sound."))
+        setTimeout(playGame, 2000)
+      }
+    }
+    wasClicked1 += 1;
+    if (wasClicked1 == 3) {
+      setTimeout(playGame, 1000)
+    }
+  }
+
+  function clicked2() {
+    playA4()
+    wasClicked2 += 1;
+    wasClicked1 = 0;
+    if (inPractice) {
+      setTimeout(practice3, 1000);
+    }
+    if (playing == true) {
+      pClicked2 = true;
+      pClicked1 = false;
+      pClicked3 = false;
+      pClicked4 = false;
+    }
+    if (lookingFor) {
+      if (lookingFor2) {
+        setTimeout(goodJob, 2000)
+        console.log("Good job!")
+        setTimeout(playGame, 2000);
+      } else {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Not quite, let's try a different sound."))
+        setTimeout(playGame, 2000)
+      }
+    }
+  }
+
+  function clicked3() {
+    playB5()
+    wasClicked3 += 1;
+    wasClicked1 = 0;
+    if (inPractice) {
+      setTimeout(practice4, 1000);
+    }
+    if (playing == true) {
+      pClicked3 = true;
+      pClicked4 = false;
+      pClicked1 = false;
+      pClicked2 = false;
+    }
+    if (lookingFor) {
+      if (lookingFor3) {
+        setTimeout(goodJob, 2000)
+        console.log("Good job!")
+        setTimeout(playGame, 2000)
+      } else {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Not quite, let's try a different sound."))
+        setTimeout(playGame, 2000)
+      }
+    }
+  }
+
+  function clicked4() {
+    playGsharp()
+    wasClicked4 += 1;
+    wasClicked1 = 0;
+    if (inPractice) {
+      setTimeout(finishPractice, 000);
+    }
+    if (playing == true) {
+      pClicked4 = true;
+      pClicked1 = false;
+      pClicked2 = false;
+      pClicked3 = false;
+    }
+    if (lookingFor) {
+      if (lookingfor4) {
+        setTimeout(goodJob, 2000)
+        console.log("Good job!")
+        setTimeout(playGame, 2000)
+      } else {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Not quite, let's try a different sound."))
+        setTimeout(playGame, 2000)
+      }
+    }
+  }
+
+  function goodJob() {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good job!"))
+  }
 
 })
