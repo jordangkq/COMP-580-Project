@@ -314,7 +314,6 @@ else if(gameClicked1==0) {
       }
       wasClicked1 += 1;
       if (wasClicked1 == 3) {
-        gameClicked1=0;
         setTimeout(playGame, 1000)
       }
     }
