@@ -2,12 +2,12 @@ $(document).ready(() => {
     var synth = window.speechSynthesis;
     var beginning = true;
     document.onclick = function () { start() };
-  
+
     var wasClicked1 = 0;
     var wasClicked2 = 0;
     var wasClicked3 = 0;
     var wasClicked4 = 0;
-  
+
     var gameClicked1 = 0;
     var gameClicked2 = 0;
     var gameClicked3 = 0;
@@ -17,13 +17,13 @@ $(document).ready(() => {
     var pClicked2 = 0;
     var pClicked3 = 0;
     var pClicked4 = 0;
-  
+
     var lookingFor = false;
     var lookingFor1 = false;
     var lookingFor2 = false;
     var lookingFor3 = false;
     var lookingfor4 = false;
-  
+
     function start() {
       if (beginning) {
         document.getElementById("tapAnywhere").remove();
@@ -36,45 +36,45 @@ $(document).ready(() => {
         practice();
         beginning = false;
       }
-  
+
     }
-  
+
     var inPractice = true;
     var playing = false;
-  
+
     function practice() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's practice playing the squares to learn what sounds they make!"))
       console.log("Let's practice playing the squares to learn what sounds they make!")
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- upper -- left -- portion of the screen."))
       console.log("Click the -- upper -- left -- portion of the screen.")
     }
-  
+
     function practice2() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- upper -- right -- portion of the screen."))
       console.log("Good! Now. Click the -- upper -- right -- portion of the screen.")
     }
-  
+
     function practice3() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- lower -- left -- portion of the screen."))
       console.log("Good! Now. Click the -- lower -- left -- portion of the screen.")
-  
+
     }
-  
+
     function practice4() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now."))
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Click the -- lower -- right -- portion of the screen."))
       console.log("Good! Now. Click the -- lower -- right -- portion of the screen.")
-  
+
     }
-  
+
     function finishPractice() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good! Now play around with the sounds as much as you like. When you are ready to begin the game, press the -- upper -- left -- square -- 3 -- times!"))
       console.log("Good! Now play around with the sounds as much as you like. When you are ready to begin the game, press the -- upper -- left -- square -- 3 -- times!")
       inPractice = false;
     }
-  
+
     function playGame() {
       playing = true;
       lookingFor = false;
@@ -93,9 +93,9 @@ $(document).ready(() => {
         y = playSameAs()
       }
     }
-  
-  
-  
+
+
+
     function playHigherThan() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times:"))
       console.log("Play this sound 5 times:")
@@ -109,9 +109,9 @@ $(document).ready(() => {
       if (h == 3) {
         setTimeout(playGsharp, 5000);
       }
-  
+
        lookingFor = true;
-  
+
       if (h == 1) {
         lookingFor1 = true;
         lookingFor2 = false;
@@ -130,10 +130,10 @@ $(document).ready(() => {
         lookingFor3 = false;
         lookingfor4 = true;
       }
-  
-  
+
+
     }
-  
+
     function playLowerThan() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times:"))
       console.log("Play this sound 5 times:")
@@ -147,9 +147,9 @@ $(document).ready(() => {
       if (h == 3) {
         setTimeout(playGsharp, 5000);
       }
-  
+
        lookingFor = true;
-  
+
       if (h == 1) {
         lookingFor1 = false;
         lookingFor2 = false;
@@ -168,9 +168,9 @@ $(document).ready(() => {
         lookingFor3 = false;
         lookingfor4 = true;
       }
-  
+
     }
-  
+
     function playSameAs() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times::"))
       console.log("Play this sound 5 times::")
@@ -187,9 +187,9 @@ $(document).ready(() => {
       if (h == 4) {
         setTimeout(playGsharp, 5000)
       }
-  
+
        lookingFor = true;
-  
+
       if (h == 1) {
         lookingFor1 = true;
         lookingFor2 = false;
@@ -215,8 +215,8 @@ $(document).ready(() => {
         lookingfor4 = true;
       }
     }
-  
-  
+
+
     function playGsharp() {
       var context = new AudioContext()
       var o = context.createOscillator()
@@ -231,7 +231,7 @@ $(document).ready(() => {
       )
       console.log("Played G sharp (830)")
     }
-  
+
     function playA4() {
       var context = new AudioContext()
       var o = context.createOscillator()
@@ -246,7 +246,7 @@ $(document).ready(() => {
       )
       console.log("Played A4 (440)")
     }
-  
+
     function playC4() {
       var context = new AudioContext()
       var o = context.createOscillator()
@@ -261,7 +261,7 @@ $(document).ready(() => {
       )
       console.log("Played C4 (261)")
     }
-  
+
     function playB5() {
       var context = new AudioContext()
       var o = context.createOscillator()
@@ -276,7 +276,7 @@ $(document).ready(() => {
       )
       console.log("Played B5 (987)")
     }
-  
+
     function clicked1() {
       playC4()
       gameClicked2 = 0;
@@ -285,14 +285,13 @@ $(document).ready(() => {
     //   if(gameClicked1 == 5){
     //       lookingFor=true;
     //   }
-    
+    gameClicked1 +=1;
       if (inPractice == true) {
         wasClicked1 = 0;
         gameClicked1 =0;
         setTimeout(practice2, 1000);
       }
       if (playing == true) {
-        gameClicked1 +=1;
         pClicked1 = true;
         pClicked2 = false;
         pClicked3 = false;
@@ -317,7 +316,7 @@ else if(gameClicked1==0) {
         setTimeout(playGame, 1000)
       }
     }
-  
+
     function clicked2() {
       playA4()
       wasClicked2 += 1;
@@ -327,14 +326,13 @@ else if(gameClicked1==0) {
     //   if(gameClicked2 == 5){
     //     lookingFor=true;
     // }
-   
+    gameClicked2 +=1;
       wasClicked1 = 0;
       if (inPractice==true) {
         gameClicked2 = 0;
         setTimeout(practice3, 1000);
       }
       if (playing == true) {
-        gameClicked2 +=1;
         pClicked2 = true;
         pClicked1 = false;
         pClicked3 = false;
@@ -355,13 +353,13 @@ else if(gameClicked1==0) {
           setTimeout(playGame, 2000)
         }
     }
-    
+
 }
-  
+
     function clicked3() {
       playB5()
       wasClicked3 += 1;
-      
+      gameClicked3 +=1;
       gameClicked1 = 0;
       gameClicked2 = 0;
       gameClicked4 = 0;
@@ -374,7 +372,6 @@ else if(gameClicked1==0) {
         setTimeout(practice4, 1000);
       }
       if (playing == true) {
-        gameClicked3 +=1;   
         pClicked3 = true;
         pClicked4 = false;
         pClicked1 = false;
@@ -394,11 +391,11 @@ else if(gameClicked1==0) {
         }
       }
     }
-  
+
     function clicked4() {
       playGsharp()
       wasClicked4 += 1;
-      
+      gameClicked4 += 1;
       gameClicked1 = 0;
       gameClicked2 = 0;
       gameClicked3 = 0;
@@ -411,7 +408,6 @@ else if(gameClicked1==0) {
         setTimeout(finishPractice, 000);
       }
       if (playing == true) {
-        gameClicked4 += 1;
         pClicked4 = true;
         pClicked1 = false;
         pClicked2 = false;
@@ -431,9 +427,9 @@ else if(gameClicked1==0) {
         }
       }
     }
-  
+
     function goodJob() {
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Good job!"))
     }
-  
+
   })
