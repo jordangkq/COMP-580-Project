@@ -34,11 +34,6 @@ $(document).ready(() => {
       document.getElementById("cell3").onclick = function () { clicked3() };
       document.getElementById("cell4").onclick = function () { clicked4() };
       
-      document.getElementById("cell1").onmouseover = function () {window.speechSynthesis.speak(new SpeechSynthesisUtterance("one"))};
-      document.getElementById("cell2").onmouseover = function () {window.speechSynthesis.speak(new SpeechSynthesisUtterance("two"))};
-      document.getElementById("cell3").onmouseover = function () {window.speechSynthesis.speak(new SpeechSynthesisUtterance("three"))};
-      document.getElementById("cell4").onmouseover = function () {window.speechSynthesis.speak(new SpeechSynthesisUtterance("four"))};
-      
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound."))
       console.log("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound.")
       practice();
