@@ -176,7 +176,7 @@ $(document).ready(() => {
 
   function playSameAs() {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- the same -- as -- "))
-    Console.log("Play a sound that is the same as::")
+    console.log("Play a sound that is the same as:")
     var h = Math.floor(Math.random() * 4) + 1;
     if (h == 1) {
       setTimeout(playC4, 5000)
