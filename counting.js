@@ -285,13 +285,14 @@ $(document).ready(() => {
     //   if(gameClicked1 == 5){
     //       lookingFor=true;
     //   }
-    gameClicked1 +=1;
+    
       if (inPractice == true) {
         wasClicked1 = 0;
         gameClicked1 =0;
         setTimeout(practice2, 1000);
       }
       if (playing == true) {
+        gameClicked1 +=1;
         pClicked1 = true;
         pClicked2 = false;
         pClicked3 = false;
@@ -327,13 +328,14 @@ else if(gameClicked1==0) {
     //   if(gameClicked2 == 5){
     //     lookingFor=true;
     // }
-    gameClicked2 +=1;
+   
       wasClicked1 = 0;
       if (inPractice==true) {
         gameClicked2 = 0;
         setTimeout(practice3, 1000);
       }
       if (playing == true) {
+        gameClicked2 +=1;
         pClicked2 = true;
         pClicked1 = false;
         pClicked3 = false;
@@ -360,7 +362,7 @@ else if(gameClicked1==0) {
     function clicked3() {
       playB5()
       wasClicked3 += 1;
-      gameClicked3 +=1;
+      
       gameClicked1 = 0;
       gameClicked2 = 0;
       gameClicked4 = 0;
@@ -373,6 +375,7 @@ else if(gameClicked1==0) {
         setTimeout(practice4, 1000);
       }
       if (playing == true) {
+        gameClicked3 +=1;   
         pClicked3 = true;
         pClicked4 = false;
         pClicked1 = false;
@@ -396,7 +399,7 @@ else if(gameClicked1==0) {
     function clicked4() {
       playGsharp()
       wasClicked4 += 1;
-      gameClicked4 += 1;
+      
       gameClicked1 = 0;
       gameClicked2 = 0;
       gameClicked3 = 0;
@@ -409,6 +412,7 @@ else if(gameClicked1==0) {
         setTimeout(finishPractice, 000);
       }
       if (playing == true) {
+        gameClicked4 += 1;
         pClicked4 = true;
         pClicked1 = false;
         pClicked2 = false;
