@@ -3,6 +3,7 @@ $(document).ready(() => {
   var synth = window.speechSynthesis;
   var beginning = true;
   document.onclick = function () { start() };
+  document.getElementById("tapAnywhere").onmouseover = function () { voiceTap() };
 
   var wasClicked1 = 0;
   var wasClicked2 = 0;
@@ -19,6 +20,11 @@ $(document).ready(() => {
   var lookingFor2 = false;
   var lookingFor3 = false;
   var lookingfor4 = false;
+  
+  function voiceTap(){
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Tap anywhere to get started"))
+    console.log("Tap anywhere to get started")
+  }
 
   function start() {
     if (beginning) {
@@ -78,7 +84,7 @@ $(document).ready(() => {
     console.log("Let's play!")
     var x = 0
     var y = 0
-    x = Math.floor(Math.random() * 2) + 1;
+    x = Math.floor(Math.random() * 3) + 1;
     if (x == 1) {
       y = playHigherThan()
     }
@@ -95,7 +101,7 @@ $(document).ready(() => {
   function playHigherThan() {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- higher -- than -- "))
     console.log("Play a sound that is higher than:")
-    var h = Math.floor(Math.random() * 2) + 1;
+    var h = Math.floor(Math.random() * 3) + 1;
     if (h == 1) {
       setTimeout(playC4, 5000);
     }
@@ -133,7 +139,7 @@ $(document).ready(() => {
   function playLowerThan() {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- lower -- than -- "))
     console.log("Play a sound that is lower than:")
-    var h = Math.floor(Math.random() * 2) + 1;
+    var h = Math.floor(Math.random() * 3) + 1;
     if (h == 1) {
       setTimeout(playB5, 5000);
     }
@@ -171,7 +177,7 @@ $(document).ready(() => {
   function playSameAs() {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play a sound that is -- the same -- as -- "))
     Console.log("Play a sound that is the same as::")
-    var h = Math.floor(Math.random() * 2) + 1;
+    var h = Math.floor(Math.random() * 4) + 1;
     if (h == 1) {
       setTimeout(playC4, 5000)
     }
