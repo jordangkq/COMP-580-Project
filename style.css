@@ -36,6 +36,23 @@ body {
   background: gold;
 }
 
+.cell-1:hover {
+    background-color: #66d9ff
+    color: white;
+  }
+.cell-2:hover {
+    background-color: #ff7c4d
+    color: white;
+  }
+.cell-3:hover {
+    background-color: #6585e7
+    color: white;
+  }
+.cell-4:hover {
+    background-color: #ffe44d
+    color: white;
+  }
+
 button {
   border: 0px solid #c4c4c4;
   font-size: 2rem;
