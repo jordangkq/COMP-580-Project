@@ -105,94 +105,9 @@ $(document).ready(() => {
         var x = 0
         var y = 0
         count=between(1,6);
-//         x = Math.floor(Math.random() * 2) + 1;
-//         if (x == 1) {
-//             y = playHigherThan()
-//         }
-//         if (x == 2) {
-//             y = playLowerThan()
-//         }
-//         if (x == 3) {
-            y = playSameAs()
-//         }
+        y = playSameAs()
     }
 
-
-
-    function playHigherThan() {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
-        console.log("Play this sound " + count + " times")
-        var h = Math.floor(Math.random() * 2) + 1;
-        if (h == 1) {
-            setTimeout(playC4, 5000);
-        }
-        if (h == 2) {
-            setTimeout(playA4, 5000);
-        }
-        if (h == 3) {
-            setTimeout(playGsharp, 5000);
-        }
-
-        lookingFor = true;
-
-        if (h == 1) {
-            lookingFor1 = true;
-            lookingFor2 = false;
-            lookingFor3 = false;
-            lookingfor4 = false;
-        }
-        if (h == 2) {
-            lookingFor1 = false;
-            lookingFor2 = true;
-            lookingFor3 = false;
-            lookingfor4 = false;
-        }
-        if (h == 3) {
-            lookingFor1 = false;
-            lookingFor2 = false;
-            lookingFor3 = false;
-            lookingfor4 = true;
-        }
-
-
-    }
-
-    function playLowerThan() {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
-        console.log("Play this sound " + count + " times")
-        var h = Math.floor(Math.random() * 2) + 1;
-        if (h == 1) {
-            setTimeout(playB5, 5000);
-        }
-        if (h == 2) {
-            setTimeout(playA4, 5000);
-        }
-        if (h == 3) {
-            setTimeout(playGsharp, 5000);
-        }
-
-        lookingFor = true;
-
-        if (h == 1) {
-            lookingFor1 = false;
-            lookingFor2 = false;
-            lookingFor3 = true;
-            lookingfor4 = false;
-        }
-        if (h == 2) {
-            lookingFor1 = false;
-            lookingFor2 = true;
-            lookingFor3 = false;
-            lookingfor4 = false;
-        }
-        if (h == 3) {
-            lookingFor1 = false;
-            lookingFor2 = false;
-            lookingFor3 = false;
-            lookingfor4 = true;
-        }
-
-    }
 
     function playSameAs() {
         window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
@@ -305,9 +220,6 @@ $(document).ready(() => {
         gameClicked2 = 0;
         gameClicked3 = 0;
         gameClicked4 = 0;
-        //   if(gameClicked1 == 5){
-        //       lookingFor=true;
-        //   }
         gameClicked1 += 1;
         if (inPractice == true) {
             wasClicked1 = 0;
@@ -348,9 +260,6 @@ $(document).ready(() => {
         gameClicked1 = 0;
         gameClicked3 = 0;
         gameClicked4 = 0;
-        //   if(gameClicked2 == 5){
-        //     lookingFor=true;
-        // }
         gameClicked2 += 1;
         wasClicked1 = 0;
         if (inPractice == true) {
@@ -388,9 +297,6 @@ $(document).ready(() => {
         gameClicked1 = 0;
         gameClicked2 = 0;
         gameClicked4 = 0;
-        //   if(gameClicked3 == 5){
-        //     lookingFor=true;
-        // }
         wasClicked1 = 0;
         if (inPractice == true) {
             gameClicked3 = 0;
@@ -424,9 +330,6 @@ $(document).ready(() => {
         gameClicked1 = 0;
         gameClicked2 = 0;
         gameClicked3 = 0;
-        //   if(gameClicked4 == 5){
-        //     lookingFor=true;
-        // }
         wasClicked1 = 0;
         if (inPractice == true) {
             gameClicked4 = 0;
