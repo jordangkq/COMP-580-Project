@@ -16,7 +16,7 @@ $(document).ready(() => {
     document.getElementById("cell1").onmouseenter = function () { playMouseSound() };
     document.getElementById("cell2").onmouseenter = function () { playMouseSound() };
 
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Hello! Welcome to our game! There are two modes you can play: Tap the left half of the screen to play -- Count the Beats --! Tap the right side of the screen to play -- Making Comparisons!"))
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Hello! Welcome to our game! There are two modes you can play: Tap the left half of the screen to play -- Count the Beats --! Tap the right half of the screen to play -- Making Comparisons!"))
   }
   
   function playMouseSound() {
