@@ -18,6 +18,11 @@ $(document).ready(() => {
 
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Hello! Welcome to our game! There are two modes you can play: Tap the left half of the screen to play -- Count the Beats --! Tap the right side of the screen to play -- Making Comparisons!"))
   }
+  
+  function playMouseSound() {
+    var m = document.getElementById("myAudio"); 
+    m.play(); 
+  }
 
   function clicked1() {
     location.href = "PatternRecognition.html";
