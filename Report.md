@@ -5,7 +5,7 @@ It is a math game using music! We have done some research about how music can be
 Individuals with visual, cognitive, and motor impairments
 
 ## Technologies
-- Browser-based Voice and Sound API's
+- Web Audio API
 - DOM
 
 ## Frameworks
