@@ -104,17 +104,17 @@ $(document).ready(() => {
         console.log("Let's play!")
         var x = 0
         var y = 0
-        count=between(2,6);
-        x = Math.floor(Math.random() * 2) + 1;
-        if (x == 1) {
-            y = playHigherThan()
-        }
-        if (x == 2) {
-            y = playLowerThan()
-        }
-        if (x == 3) {
+        count=between(1,6);
+//         x = Math.floor(Math.random() * 2) + 1;
+//         if (x == 1) {
+//             y = playHigherThan()
+//         }
+//         if (x == 2) {
+//             y = playLowerThan()
+//         }
+//         if (x == 3) {
             y = playSameAs()
-        }
+//         }
     }
 
 
@@ -197,7 +197,7 @@ $(document).ready(() => {
     function playSameAs() {
         window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
         console.log("Play this sound " + count + " times")
-        var h = Math.floor(Math.random() * 2) + 1;
+        var h = Math.floor(Math.random() * 4) + 1;
         if (h == 1) {
             setTimeout(playC4, 5000)
         }
