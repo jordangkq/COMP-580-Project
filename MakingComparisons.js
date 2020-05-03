@@ -129,8 +129,8 @@ $(document).ready(() => {
     if (h == 3) {
       lookingFor1 = false;
       lookingFor2 = false;
-      lookingFor3 = false;
-      lookingfor4 = true;
+      lookingFor3 = true;
+      lookingfor4 = false;
     }
 
 
