@@ -1,6 +1,13 @@
 $(document).ready(() => {
   var synth = window.speechSynthesis;
   document.onclick = function () { start() };
+  document.getElementById("tapAnywhere").onmouseover = function () { voiceTap() };
+
+  function voiceTap(){
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Tap anywhere to get started"))
+    console.log("Tap anywhere to get started")
+  }
+  
   function start() {
     document.getElementById("tapAnywhere").remove();
     document.getElementById("cell1").onclick = function () { clicked1() };
