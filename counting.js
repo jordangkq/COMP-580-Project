@@ -36,6 +36,12 @@ $(document).ready(() => {
             document.getElementById("cell2").onclick = function () { clicked2() };
             document.getElementById("cell3").onclick = function () { clicked3() };
             document.getElementById("cell4").onclick = function () { clicked4() };
+
+            document.getElementById("cell1").onmouseenter = function () { playMouseSound() };
+            document.getElementById("cell2").onmouseenter = function () { playMouseSound() };
+            document.getElementById("cell3").onmouseenter = function () { playMouseSound() };
+            document.getElementById("cell4").onmouseenter = function () { playMouseSound() };
+
             window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Count the Beats! In this mode, I will play a note. Then you must play the same note for the number of times that I say. Use the four blocks to play your sounds."))
             console.log("Let's play -- Count the Beats! In this mode, I will play a note. Then you must play the same note for the number of times that I say. Use the four blocks to play your sounds.")
             practice();
@@ -47,10 +53,6 @@ $(document).ready(() => {
     function voiceTap(){
         window.speechSynthesis.speak(new SpeechSynthesisUtterance("Tap anywhere to get started"))
         console.log("Tap anywhere to get started")
-    }
-    function playVoice(){
-     setTimeout(voiceTap,5000)
-
     }
 
     function between(min, max) {  
@@ -154,6 +156,10 @@ $(document).ready(() => {
         }
     }
 
+    function playMouseSound() {
+        var m = document.getElementById("myAudio"); 
+        m.play(); 
+      }
 
     function playGsharp() {
         var context = new AudioContext()
