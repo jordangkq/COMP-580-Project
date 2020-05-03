@@ -34,6 +34,12 @@ $(document).ready(() => {
       document.getElementById("cell3").onclick = function () { clicked3() };
       document.getElementById("cell4").onclick = function () { clicked4() };
       
+      document.getElementById("cell1").onmouseenter = function () { playMouseSound() };
+      document.getElementById("cell2").onmouseenter = function () { playMouseSound() };
+      document.getElementById("cell3").onmouseenter = function () { playMouseSound() };
+      document.getElementById("cell4").onmouseenter = function () { playMouseSound() };
+
+      
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound."))
       console.log("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound.")
       practice();
@@ -220,6 +226,10 @@ $(document).ready(() => {
     }
   }
 
+  function playMouseSound() {
+    var m = document.getElementById("myAudio"); 
+    m.play(); 
+  }
 
   function playGsharp() {
     var context = new AudioContext()
