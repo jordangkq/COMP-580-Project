@@ -24,8 +24,11 @@ $(document).ready(() => {
     var lookingFor3 = false;
     var lookingfor4 = false;
 
-    var playAround = false;
+    var count =0;
 
+    var playAround = false;
+    document.getElementById("tapAnywhere").onmouseover = function () { voiceTap() };
+    
     function start() {
         if (beginning) {
             document.getElementById("tapAnywhere").remove();
@@ -40,6 +43,21 @@ $(document).ready(() => {
         }
 
     }
+
+    function voiceTap(){
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Tap anywhere to get started"))
+        console.log("Tap anywhere to get started")
+    }
+    function playVoice(){
+     setTimeout(voiceTap,5000)
+
+    }
+
+    function between(min, max) {  
+        return Math.floor(
+          Math.random() * (max - min) + min
+        )
+      }
 
     var inPractice = true;
     var playing = false;
@@ -86,6 +104,7 @@ $(document).ready(() => {
         console.log("Let's play!")
         var x = 0
         var y = 0
+        count=between(2,6);
         x = Math.floor(Math.random() * 2) + 1;
         if (x == 1) {
             y = playHigherThan()
@@ -101,8 +120,8 @@ $(document).ready(() => {
 
 
     function playHigherThan() {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times:"))
-        console.log("Play this sound 5 times:")
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
+        console.log("Play this sound " + count + " times")
         var h = Math.floor(Math.random() * 2) + 1;
         if (h == 1) {
             setTimeout(playC4, 5000);
@@ -139,8 +158,8 @@ $(document).ready(() => {
     }
 
     function playLowerThan() {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times:"))
-        console.log("Play this sound 5 times:")
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
+        console.log("Play this sound " + count + " times")
         var h = Math.floor(Math.random() * 2) + 1;
         if (h == 1) {
             setTimeout(playB5, 5000);
@@ -176,8 +195,8 @@ $(document).ready(() => {
     }
 
     function playSameAs() {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound 5 times::"))
-        console.log("Play this sound 5 times::")
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Play this sound " + count + " times"))
+        console.log("Play this sound " + count + " times")
         var h = Math.floor(Math.random() * 2) + 1;
         if (h == 1) {
             setTimeout(playC4, 5000)
@@ -303,7 +322,7 @@ $(document).ready(() => {
         }
         if (lookingFor) {
             if (lookingFor1) {
-                if (gameClicked1 == 5) {
+                if (gameClicked1 == count) {
                     setTimeout(goodJob, 2000)
                     console.log("Good job!")
                     gameClicked1 = 0;
@@ -347,7 +366,7 @@ $(document).ready(() => {
 
         if (lookingFor) {
             if (lookingFor2) {
-                if (gameClicked2 == 5) {
+                if (gameClicked2 == count) {
                     setTimeout(goodJob, 2000)
                     console.log("Good job!")
                     gameClicked2 = 0;
@@ -385,7 +404,7 @@ $(document).ready(() => {
         }
         if (lookingFor) {
             if (lookingFor3) {
-                if (gameClicked3 == 5) {
+                if (gameClicked3 == count) {
                     setTimeout(goodJob, 2000)
                     console.log("Good job!")
                     gameClicked3 = 0;
@@ -421,7 +440,7 @@ $(document).ready(() => {
         }
         if (lookingFor) {
             if (lookingfor4) {
-                if (gameClicked4 == 5) {
+                if (gameClicked4 == count) {
                     setTimeout(goodJob, 2000)
                     console.log("Good job!")
                     gameClicked4 = 0;
