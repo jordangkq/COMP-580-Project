@@ -33,6 +33,12 @@ $(document).ready(() => {
       document.getElementById("cell2").onclick = function () { clicked2() };
       document.getElementById("cell3").onclick = function () { clicked3() };
       document.getElementById("cell4").onclick = function () { clicked4() };
+      
+      document.getElementById("cell1").onmouseover = function () { playC4() };
+      document.getElementById("cell2").onmouseover = function () { playA4() };
+      document.getElementById("cell3").onmouseover = function () { playB5() };
+      document.getElementById("cell4").onmouseover = function () { playGsharp() };
+      
       window.speechSynthesis.speak(new SpeechSynthesisUtterance("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound."))
       console.log("Let's play -- Making Comparisons! In this mode, I will play a sound. Then you must play a sound that is -- higher -- or --lower -- than the sound I played. Use the four blocks to play your sound.")
       practice();
